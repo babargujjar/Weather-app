@@ -1,4 +1,5 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom'
 import Logos from "./../../assets/Logos.svg"
 import Day from "./../../assets/icons/Cloudy/Icons.svg"
 import thermometer from "./../../assets/icons/thermometer-simple-light.png"
@@ -15,6 +16,9 @@ import rainday from "./../../assets/icons/Rain/Day.png"
 import stormday from "./../../assets/icons/Storm/Day.png"
 
 const WeatherDetails = () => {
+    const location = useLocation();
+    const queryParams = location.search
+    console.log(queryParams)
     return (
  
         <div className='grid grid-cols-2 h-full w-full gap-5 max-w-[1318px] max-h-[720px] mx-auto py-6  '>
