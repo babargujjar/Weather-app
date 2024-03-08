@@ -1,9 +1,11 @@
 import optionSlice from "./../redux/optionSlice"
+import currentWeatherSlice from "./../redux/currentWeatherSlice"
 import { configureStore } from '@reduxjs/toolkit'
 
 export const store = configureStore({
   reducer: {
-    options:optionSlice
+    options:optionSlice,
+    CurrentWeather:currentWeatherSlice
   },
 })
 
