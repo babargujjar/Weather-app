@@ -87,10 +87,10 @@ export const getCurrentWeather = createAsyncThunk(
   "getCurrentWeather",
   async (value:string) => {
     // console.log(value)
-   const res=
-      await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${value.lat}&lon=${value.lon}&appid=${APPID}`)
+  //  const res=
+  //     await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${value.lat}&lon=${value.lon}&appid=${APPID}`)
 
-    return res
+  //   return res
     }
     );
 

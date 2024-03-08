@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAppDispatch, useAppSelector } from "./../../redux/hooks"
+import { useAppDispatch, useAppSelector } from "../../redux/hooks"
 import { getOptions } from '../../redux/optionSlice';
 import { useEffect } from 'react';
 import { LocationType } from '../../redux/optionSlice';

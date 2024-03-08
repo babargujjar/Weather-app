@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from "./../../assets/Logo.svg"
-import Search from '../searchInput/Search';
+import Search from '../../components/searchInput/Search';
 
 
 
