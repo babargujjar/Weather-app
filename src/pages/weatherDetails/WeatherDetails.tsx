@@ -13,27 +13,33 @@ import FiveDays from '../../components/weatherforcast/FiveDays'
 
 const WeatherDetails = () => {
     const location = useLocation();
-    const queryParams = location.search
-    console.log(queryParams)
+
+    const queryParams = new URLSearchParams(location.search)
+
+    var lon = queryParams.get("lon")
+
+    var lat = queryParams.get("lat")
+
+    // console.log(lon,lat)
+
     return (
-
-        <div className='grid grid-cols-2 h-full w-full gap-5 max-w-[1318px] max-h-[720px] mx-auto py-6  '>
+        <div className='w-full lg:h-[768px] bg-[#13131A] '>
+            {/* <div className='grid grid-cols-2 h-full w-full gap-5 max-w-[1318px] max-h-[720px] mx-auto py-6  '> */}
             {/* current temperature section */}
-            <div className=' w-100vw lg:w-full h-full col-span-2 lg:col-span-1 [background-color:#16161F] p-4 rounded-lg'>
-               <CurrentWeather />
-            </div>
+            <div className='flex flex-row lg:w-[1318px] lg:h-[720px] gap-[23px] p-[24px]'>
+                <div className='  lg:w-[664px] lg:h-[720px] col-span-2 lg:col-span-1 bg-[#16161F] rounded-lg'>
+                    <CurrentWeather lat={lat ?? ""} lon={lon ?? ""} />
+                </div>
 
-            {/* other five days temperature section and other details about weather */}
-            <div className='w-full h-full  col-span-2 lg:col-span-1 flex flex-col gap-3 grid-cols-5'>
-                {/* other weather details */}
-                <OtherDetails />
-                {/* five days temperature */}
-           <FiveDays />              
-
-
+                {/* other five days temperature section and other details about weather */}
+                <div className='w-[630px] h-[720px]  col-span-2 lg:col-span-1 flex flex-col gap-3 grid-cols-5'>
+                    {/* other weather details */}
+                    <OtherDetails lat={lat ?? ""} lon={lon ?? ""} />
+                    {/* five days temperature */}
+                    <FiveDays lat={lat ?? ""} lon={lon ?? ""} />
+                </div>
             </div>
         </div>
-
     )
 }
 

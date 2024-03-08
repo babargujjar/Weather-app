@@ -85,12 +85,12 @@ const initialState: WeatherState = {
 
 export const getCurrentWeather = createAsyncThunk(
   "getCurrentWeather",
-  async (value:string) => {
+  async ({lat,lon}:{lat:number,lon:number}) => {
     // console.log(value)
-  //  const res=
-  //     await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${value.lat}&lon=${value.lon}&appid=${APPID}`)
-
-  //   return res
+   const res=
+      await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APPID}`)
+    // console.log(res)
+      return res.data
     }
     );
 
@@ -120,4 +120,9 @@ export const currentWeatherSlice = createSlice({
 });
 
 export default currentWeatherSlice.reducer;
+
+
+
+
+
 

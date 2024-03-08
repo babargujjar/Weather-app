@@ -44,13 +44,10 @@ const Search = () => {
   }, [relatedCityName]);
   
   const handleNavigate = (item:LocationItem) => {
-    // Define your query parameters
-    const queryParams = {
-      lon: item.lon,
-      lat: item.lat,
-    };
     // console.log(queryParams)
-    navigate(`/weather?lon=${queryParams.lon}&lat=${queryParams.lat}`)}
+    let lon = item.lon
+    let lat = item.lat
+    navigate(`/weather?lon=${lon}&lat=${lat}`)}
 
   const cityName = (item: LocationItem) => {
 

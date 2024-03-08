@@ -16,9 +16,9 @@ body{
     background-image: url(../src/assets/Background.png);
   background-repeat: no-repeat;
   background-size: cover;
-  width: 100vw;
+  /* width: 100vw; */
   height: 100%;
-  padding: 0px 5px;
+  /* padding: 0px 5px; */
   
 }
 .cardbg{
