@@ -32,7 +32,7 @@ const WeatherDetails = () => {
                 </div>
 
                 {/* other five days temperature section and other details about weather */}
-                <div className='w-[630px] w-full h-[720px]  col-span-2 lg:col-span-1 flex flex-col gap-3 grid-cols-5'>
+                <div className='w-[630px] h-[720px]  col-span-2 lg:col-span-1 flex flex-col gap-3 grid-cols-5'>
                     {/* other weather details */}
                     <OtherDetails lat={lat ?? ""} lon={lon ?? ""} />
                     {/* five days temperature */}
