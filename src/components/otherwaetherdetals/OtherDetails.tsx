@@ -11,7 +11,7 @@ const OtherDetails = ({ lat, lon }: any) => {
     const currentWeather = useAppSelector(state => state.CurrentWeather)
 
     const weather = currentWeather.data
-    console.log(weather)
+    // console.log(weather)
 
     const tempKtoC = (value: number, decimalPlaces: number = 0) => {
         const newValue = (value - 273).toFixed(decimalPlaces)
@@ -38,7 +38,7 @@ const OtherDetails = ({ lat, lon }: any) => {
                         <div className='flex items-center gap-2'>
                             <img className='w-[30px] [color:#535364]' src={windlight} alt="" /> <h3 className='text-md text-[#a1a1b3]'>Wind Speed</h3>
                         </div>
-                        <h2 className='text-xl'>{weather?.wind.speed} km/h</h2>
+                        <h2 className='text-xl'>{weather?.wind.speed } km/h</h2>
                     </div>
                     <div className='flex items-center border-b border-[#282831] py-3 justify-between'>
                         <div className='flex items-center gap-2'>

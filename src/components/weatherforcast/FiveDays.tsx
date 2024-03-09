@@ -6,8 +6,23 @@ import fewcloudday from "./../../assets/icons/Few clouds/Day.png"
 import fewcloudnight from "./../../assets/icons/Few clouds/Night.png"
 import rainday from "./../../assets/icons/Rain/Day.png"
 import stormday from "./../../assets/icons/Storm/Day.png"
+import { useAppDispatch,useAppSelector } from '../../redux/hooks'
+import { getWeatherForecast } from '../../redux/weatherForecast'
+import { useEffect } from 'react'
 
 const FiveDays = ({ lat, lon }: any) => {
+
+
+    const dispatch = useAppDispatch()
+    const weatherForecast = useAppSelector(state => state.CurrentWeather)
+
+    // console.log(currentWeather.data)
+    const forecast = weatherForecast.data
+    console.log(forecast)
+
+    useEffect(() => {
+        dispatch(getWeatherForecast({ lat, lon }))
+    }, [lat, lon, dispatch])
     return (
         <>
             <div className='col-span-2 p-4 gap-2 h-full rounded-lg [background-color:#16161F]'>

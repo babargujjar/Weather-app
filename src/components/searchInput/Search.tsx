@@ -67,7 +67,7 @@ const Search = () => {
     <div>
       <div className="mt-[32px] sm:mt-[48px] w-screen text-center ">
         <input
-          className='py-[17px] rounded-lg w-[504px] mx-20 leading-5 px-5 bg-gray-800'
+          className=' rounded-lg w-[311px] h-[56px] md:w-[504px] mx-20  px-5 bg-gray-800'
           name='search'
           value={search}
           onChange={(e) => { e.preventDefault(); handler(e.target.value); }}
