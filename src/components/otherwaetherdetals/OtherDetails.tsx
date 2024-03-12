@@ -7,6 +7,7 @@ import windlight from "./../../assets/icons/wind-light.png"
 import { useAppDispatch, useAppSelector } from '../../redux/hooks'
 
 const OtherDetails = ({ lat, lon }: any) => {
+    // console.log(lat,lon)
     const dispatch = useAppDispatch()
     const currentWeather = useAppSelector(state => state.CurrentWeather)
 
@@ -19,34 +20,34 @@ const OtherDetails = ({ lat, lon }: any) => {
     }
     return (
         <>
-            <div className='text-white  rounded-lg h-full  [background-color:#16161F] px-7 pt-7 col-span-3'>
+            <div className='text-white lg:w-[630px] lg:h-[398px] rounded-lg h-full  [background-color:#16161F] px-7 pt-7'>
                 <h2 className='text-[#535364] mb-6 text-lg'>More Weather Details</h2>
                 <div>
-                    <div className='flex items-center border-b border-[#282831] py-3 justify-between'>
+                    <div className='flex lg:w-[582px] lg:h-[64px] items-center border-b border-[#282831] py-3 justify-between'>
                         <div className='flex items-center gap-2'>
                             <img className='w-[30px] [color:#535364]' src={thermometer} alt="" /> <h3 className='text-md text-[#a1a1b3]'>Feels Like</h3>
                         </div>
                         <h2 className='text-xl'>{weather?.main ? tempKtoC(weather.main.feels_like, 0) : 'Loading...'}º C</h2>
                     </div>
-                    <div className='flex items-center border-b border-[#282831] py-3 justify-between'>
+                    <div className='flex lg:w-[582px] lg:h-[64px] items-center border-b border-[#282831] py-3 justify-between'>
                         <div className='flex items-center gap-2'>
                             <img className='w-[30px] [color:#535364]' src={cloudrain} alt="" /> <h3 className='text-md text-[#a1a1b3]'>Probability of Rain</h3>
                         </div>
                         <h2 className='text-xl'>0%</h2>
                     </div>
-                    <div className='flex items-center border-b border-[#282831] py-3 justify-between'>
+                    <div className='flex lg:w-[582px] lg:h-[64px] items-center border-b border-[#282831] py-3 justify-between'>
                         <div className='flex items-center gap-2'>
                             <img className='w-[30px] [color:#535364]' src={windlight} alt="" /> <h3 className='text-md text-[#a1a1b3]'>Wind Speed</h3>
                         </div>
                         <h2 className='text-xl'>{weather?.wind.speed } km/h</h2>
                     </div>
-                    <div className='flex items-center border-b border-[#282831] py-3 justify-between'>
+                    <div className='flex lg:w-[582px] lg:h-[64px] items-center border-b border-[#282831] py-3 justify-between'>
                         <div className='flex items-center gap-2'>
                             <img className='w-[30px] [color:#535364]' src={droplight} alt="" /> <h3 className='text-md text-[#a1a1b3]'>Air Humidity</h3>
                         </div>
                         <h2 className='text-xl'>{weather?.main.humidity}%</h2>
                     </div>
-                    <div className='flex items-center py-3 justify-between'>
+                    <div className='flex lg:w-[582px] lg:h-[64px] items-center py-3 justify-between'>
                         <div className='flex items-center gap-2'>
                             <img className='w-[30px] [color:#535364]' src={sundim} alt="" /> <h3 className='text-md text-[#a1a1b3]'>UV Index</h3>
                         </div>

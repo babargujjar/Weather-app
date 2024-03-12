@@ -3,8 +3,8 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks"
 import { getOptions } from '../../redux/optionSlice';
 import { useEffect } from 'react';
 import { LocationType } from '../../redux/optionSlice';
-import {  useNavigate } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
+import { LocalNames, LocationItem } from '../../types/types'
 
 const Search = () => {
 
@@ -20,18 +20,7 @@ const Search = () => {
   const dispatch = useAppDispatch()
   const relatedCityName = useAppSelector(state => state.options)
 
-  interface LocalNames {
-    [key: string]: string;
-  }
-  interface LocationItem {
-    name: string;
-    local_names: LocalNames;
-    lat: number;
-    lon: number;
-    country: string;
-    state: string;
-  }
-
+ 
   const data: LocationItem[] = relatedData.data
 
   // console.log(data)
@@ -42,18 +31,19 @@ const Search = () => {
       setRelatedData([])
     }
   }, [relatedCityName]);
-  
-  const handleNavigate = (item:LocationItem) => {
+
+  const handleNavigate = (item: LocationItem) => {
     // console.log(queryParams)
     let lon = item.lon
     let lat = item.lat
-    navigate(`/weather?lon=${lon}&lat=${lat}`)}
+    navigate(`/weather?lon=${lon}&lat=${lat}`)
+  }
 
   const cityName = (item: LocationItem) => {
 
     setSearch(item.name)
     handleNavigate(item)
-     
+
 
   }
 
@@ -61,7 +51,8 @@ const Search = () => {
   useEffect(() => {
     setTimeout(() => {
       dispatch(getOptions(search ? search : ""))
-    },3000)}, [search])
+    }, 3000)
+  }, [search])
 
   return (
     <div>
@@ -79,8 +70,8 @@ const Search = () => {
         <div className='h-full bg-gray-500 w-[504px] rounded-lg mt-2 mx-auto'>
           {/* Render your related data here */}
           <ul>
-            {data?.map(item => (
-              <li className='cursor-pointer m-2 relative object-cover overflow-hidden' >
+            {data?.map((item, i) => (
+              <li className='cursor-pointer m-2 relative object-cover overflow-hidden' key={i} >
                 <button className='w-full h-full absolute top-0' onClick={() => cityName(item)}></button>
                 {item.name}
               </li>

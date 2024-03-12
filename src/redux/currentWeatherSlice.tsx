@@ -46,6 +46,7 @@ interface Coord {
   }
   
   interface WeatherData {
+    list(list: any): unknown;
     coord: Coord;
     weather: Weather[];
     base: string;
