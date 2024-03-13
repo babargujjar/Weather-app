@@ -10,7 +10,7 @@ function App() {
 
 
   return (
-    <div className=" lg:w-full  ">
+    <div className="lg:w-full  ">
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/weather' element={<WeatherDetails />} />

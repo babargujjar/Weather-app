@@ -12,16 +12,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-body{
-    background-image: url(../src/assets/Background.png);
+body {
+  background-image: url(../src/assets/Background.png);
   background-repeat: no-repeat;
   background-size: cover;
-  /* width: 100vw; */
-  /* height: 100%; */
+  width: 100%;
+  height: 100%;
   /* padding: 0px 5px; */
-  
+
 }
-.cardbg{
+
+.cardbg {
   background-image: url(./assets/images/Weather=Few\ Clouds\,\ Moment=Day.png);
   width: 100%;
   background-repeat: no-repeat;
@@ -30,8 +31,9 @@ body{
   object-fit: cover;
   overflow: hidden;
   border-radius: 2%;
+
   @media (max-width:430px) {
-   height: 304px; 
-   width: 335px;
+    height: 304px;
+    width: 335px;
   }
 }

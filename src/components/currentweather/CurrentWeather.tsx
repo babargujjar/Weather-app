@@ -147,7 +147,7 @@ const CurrentWeather = ({ lat, lon }: any) => {
 
   return (
     <>
-        <div className='flex lg:gap-3 w-[335px] md:w-full gap-2 h-14 mb-4 '>
+        <div className='flex lg:gap-3 max-w-[335px] md:w-full gap-2 h-14 mb-4 '>
           <div className='h-full p-2 [background-color:#1C1C27] rounded-lg'><img className='h-10 w-10' src={Logos} alt="" /></div>
           <input className='w-full h-full rounded-lg px-5 [background-color:#1C1C27] ' type="search" placeholder='Buscar Local' />
         </div>

@@ -20,8 +20,8 @@ const OtherDetails = ({ lat, lon }: any) => {
     }
     return (
         <>
-            <div className='text-white lg:w-[630px] lg:h-[398px] rounded-lg h-full  [background-color:#16161F] px-7 pt-7'>
-                <h2 className='text-[#535364] mb-6 text-lg'>More Weather Details</h2>
+            <div className='text-white max-w-[359px] max-h-[292px] lg:max-w-[630px] lg:max-h-[398px] rounded-lg h-full  [background-color:#16161F] px-[16px] py-[4px] lg:px-7 sm:pt-7'>
+                <h2 className='text-[#535364] hidden sm:block mb-6 text-lg'>More Weather Details</h2>
                 <div>
                     <div className='flex lg:w-[582px] lg:h-[64px] items-center border-b border-[#282831] py-3 justify-between'>
                         <div className='flex items-center gap-2'>
