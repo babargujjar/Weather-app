@@ -171,7 +171,6 @@ const FiveDays = ({ lat, lon }: any) => {
     let thirdDay = fiveDaysForcast[2];
     let forthDay = fiveDaysForcast[3];
     let fifthDay = fiveDaysForcast[4];
-console.log(firstDay)
     //  extracting values in variable start
     // first Day start
     const kelvinToCelsius = (tempInKelvin: number, decimalPlaces: number = 0) => (tempInKelvin - 273.15).toFixed(decimalPlaces);
@@ -262,33 +261,33 @@ console.log(firstDay)
                 <h2 className='text-[#535364] lg:pl-[24px] lg:mt-[28px] text-lg'>Previsão para 5 dias</h2>
                 <div className='flex text-white lg:m-[24px] items-center'>
                     <div className='flex w-full lg:py-[28px] lg:px-[9px] items-center justify-center flex-col'>
-                        <h6 className='text-[#a1a1b3] text-sm'>{nextDayOne}</h6>
+                        <h6 className='text-[#a1a1b3] text-[13px]'>{nextDayOne}</h6>
                         <img className='lg:w-[67px] lg:h-[67px]' src={weatherIconCondition(firstDayIcon ?? cloudy)} alt="" />
-                        <h6 className=' text-[#a1a1b3] text-sm'>{firstDayDescription}</h6>
+                        <h6 className=' text-[#a1a1b3] text-[13px]'>{firstDayDescription}</h6>
                         <h3>{firstDayMaxTemp}ºc <span className='text-[#7F7F98]'>{firstDayMinTemp}ºc</span></h3>
                     </div>
                     <div className='flex w-full lg:py-[28px] lg:px-[9px] justify-center items-center flex-col'>
-                        <h6 className='text-[#a1a1b3] text-sm'>{nextDayTwo}</h6>
+                        <h6 className='text-[#a1a1b3] text-[13px]'>{nextDayTwo}</h6>
                         <img className='lg:w-[67px] lg:h-[67px]' src={weatherIconCondition(secondDayIcon ?? cloudy)} alt="" />
-                        <h4 className='text-[#a1a1b3] text-sm'>{secondDayDescription}</h4>
+                        <h4 className='text-[#a1a1b3] text-[13px]'>{secondDayDescription}</h4>
                         <h3>{secondDayMaxTemp}ºc <span className='text-[#535364]'>{secondDayMinTemp}ºc</span></h3>
                     </div>
                     <div className='flex lg:py-[28px] w-full lg:px-[9px] justify-center items-center flex-col'>
-                        <h6 className='text-[#a1a1b3] text-sm'>{nextDayThree}</h6>
+                        <h6 className='text-[#a1a1b3] text-[13px]'>{nextDayThree}</h6>
                         <img className='lg:w-[67px] lg:h-[67px]' src={weatherIconCondition(thirdDayIcon ?? cloudy)} alt="" />
-                        <h4 className='text-[#a1a1b3] text-sm'>{thirdDayDescription}</h4>
+                        <h4 className='text-[#a1a1b3] text-[13px]'>{thirdDayDescription}</h4>
                         <h3>{thirdDayMaxTemp}ºc <span className='text-[#535364]'>{thirdDayMinTemp}ºc</span></h3>
                     </div>
                     <div className='flex w-full lg:py-[28px] lg:px-[9px] justify-center items-center flex-col'>
-                        <h6 className='text-[#a1a1b3] text-sm'>{nextDayFour}</h6>
+                        <h6 className='text-[#a1a1b3] text-[13px]'>{nextDayFour}</h6>
                         <img className='lg:w-[67px] lg:h-[67px]' src={weatherIconCondition(forthDayIcon ?? cloudy)} alt="" />
-                        <h4 className='text-[#a1a1b3] text-sm'>{forthDayDescription}</h4>
+                        <h4 className='text-[#a1a1b3] text-[13px]'>{forthDayDescription}</h4>
                         <h3>{forthDayMaxTemp}ºc <span className='text-[#535364]'>{forthDayMinTemp}ºc</span></h3>
                     </div>
                     <div className='flex w-full lg:py-[28px] lg:px-[9px] justify-center items-center flex-col'>
-                        <h6 className='text-[#a1a1b3] text-sm'>{nextDayFifth}</h6>
+                        <h6 className='text-[#a1a1b3] text-[13px]'>{nextDayFifth}</h6>
                         <img className='lg:w-[67px] lg:h-[67px]' src={weatherIconCondition(fifthDayIcon ?? cloudy)} alt="" />
-                        <h4 className='text-[#a1a1b3] text-sm'>{fifthDayDescription}</h4>
+                        <h4 className='text-[#a1a1b3] text-[13px]'>{fifthDayDescription}</h4>
                         <h3>{fifthDayMaxTemp}ºc <span className='text-[#535364]'>{fifthDayMinTemp}ºc</span></h3>
                     </div>
                 </div>

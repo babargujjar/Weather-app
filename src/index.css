@@ -30,4 +30,8 @@ body{
   object-fit: cover;
   overflow: hidden;
   border-radius: 2%;
+  @media (max-width:430px) {
+   height: 304px; 
+   width: 335px;
+  }
 }

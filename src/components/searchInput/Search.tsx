@@ -1,26 +1,39 @@
 import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from "../../redux/hooks"
-import { getOptions } from '../../redux/optionSlice';
+import { getOptions, getOptionsStart } from '../../redux/optionSlice';
 import { useEffect } from 'react';
-import { LocationType } from '../../redux/optionSlice';
 import { useNavigate } from 'react-router-dom';
-import { LocalNames, LocationItem } from '../../types/types'
+import { LocationItem } from '../../types/types'
+import loader from "./../../assets/icons/Type7.png"
+import { useLocation } from 'react-router-dom';
 
 const Search = () => {
 
   const [search, setSearch] = useState('');
+  const [isLoading, setIsLoading] = useState(false)
   const [relatedData, setRelatedData] = useState<any>([]);
+  const location = useLocation
+  // console.log(location)
+  useEffect(() => {
+    dispatch(getOptionsStart)
+  }, [location])
 
   const handler = (value: any) => {
     setSearch(value)
+    {
+      search ? setIsLoading(true) : setIsLoading(false)
+    }
   }
-
+  // console.log(search)
   const navigate = useNavigate()
 
   const dispatch = useAppDispatch()
   const relatedCityName = useAppSelector(state => state.options)
 
- 
+  const clearSearch = useAppSelector(state => state.options.data)
+
+  // console.log(clearSearch)
+
   const data: LocationItem[] = relatedData.data
 
   // console.log(data)
@@ -41,6 +54,7 @@ const Search = () => {
 
   const cityName = (item: LocationItem) => {
 
+    setIsLoading(true);
     setSearch(item.name)
     handleNavigate(item)
 
@@ -48,33 +62,51 @@ const Search = () => {
   }
 
 
+
+
   useEffect(() => {
     setTimeout(() => {
       dispatch(getOptions(search ? search : ""))
-    }, 3000)
+    }, 1000)
   }, [search])
 
   return (
     <div>
-      <div className="mt-[32px] sm:mt-[48px] w-screen text-center ">
-        <input
-          className=' rounded-lg w-[311px] h-[56px] md:w-[504px] mx-20  px-5 bg-gray-800'
-          name='search'
-          value={search}
-          onChange={(e) => { e.preventDefault(); handler(e.target.value); }}
-          type="search"
-          placeholder='Search Location'
-        />
+      <div className="mt-[56px]  ">
+        <div className='relative w-[311px] md:w-[504px] h-[56px] mx-auto lg:h-[56px] '>
+          <input
+            className=' rounded-lg w-[311px] lg:h-[56px] lg:w-[504px] py-[17px]  px-5 bg-gray-800'
+            name='search'
+            value={search}
+            onChange={(e) => { e.preventDefault(); handler(e.target.value); }}
+            type="text"
+            placeholder='Search Location'
+          />
+          {isLoading && (
+            <div className="absolute top-4 right-2 h-[32px] w-[32px]">
+
+              <img
+                src={loader}
+                alt="Loader Image"
+                className="animate-spin w-[26px] h-[26px]  text-red-400"
+                style={{}}
+              />
+
+            </div>
+          )}
+        </div>
       </div>
       {data?.length > 0 && (
-        <div className='h-full bg-gray-500 w-[504px] rounded-lg mt-2 mx-auto'>
-          {/* Render your related data here */}
+        <div className=' bg-gray-500 lg:w-[504px] rounded-lg mt-2 mx-auto object-cover overflow-hidden'>
           <ul>
             {data?.map((item, i) => (
-              <li className='cursor-pointer m-2 relative object-cover overflow-hidden' key={i} >
-                <button className='w-full h-full absolute top-0' onClick={() => cityName(item)}></button>
-                {item.name}
-              </li>
+              <>
+                <li className='cursor-pointer  flex items-center w-[311px] lg:h-[56px] lg:w-[504px] py-[17px]  px-5' key={i} >
+                  <button className='w-full h-full absolute top-0' onClick={() => cityName(item)}></button>
+                  {item.name}
+                </li>
+                <hr className='border-black' />
+              </>
             ))}
           </ul>
         </div>
