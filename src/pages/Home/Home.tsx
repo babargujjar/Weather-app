@@ -1,10 +1,10 @@
-import React from "react";
 import logo from "./../../assets/Logo.svg";
 import Search from "../../components/searchInput/Search";
 
 const Home = () => {
   return (
     <div className="h-[100vh] w-full">
+
       <div className="max-w-[186px] h-[32px] opacity-[80%] mx-auto flex justify-center items-center pt-12">
         <img className="w-[178px] h-[30px]" src={logo} alt="logo" />
       </div>
@@ -18,6 +18,7 @@ const Home = () => {
         </h3>
         <Search />
       </div>
+      
     </div>
   );
 };

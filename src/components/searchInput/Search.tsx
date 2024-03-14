@@ -1,70 +1,58 @@
-import React, { useState } from 'react';
-import { useAppDispatch, useAppSelector } from "../../redux/hooks"
-import { getOptions, getOptionsStart } from '../../redux/optionSlice';
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { LocationItem } from '../../types/types'
-import loader from "./../../assets/icons/Type7.png"
-import { useLocation } from 'react-router-dom';
+import { useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import { getOptions, getOptionsStart } from "../../store/OptionSlice";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { LocationItem } from "../../types/types";
+import loader from "./../../assets/icons/Type7.png";
+
 
 const Search = () => {
 
-  const [search, setSearch] = useState('');
-  const [isLoading, setIsLoading] = useState(false)
+  const [search, setSearch] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [relatedData, setRelatedData] = useState<any>([]);
 
-
-
   const handler = (value: string) => {
-    setSearch(value)
-  }
- 
-  const navigate = useNavigate()
+    setSearch(value);
+  };
 
-  const dispatch = useAppDispatch()
-  const relatedCityName = useAppSelector(state => state.options)
-
-  const clearSearch = useAppSelector(state => state.options.data)
-  console.log(clearSearch)
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const relatedCityName = useAppSelector((state) => state.options);
 
 
-  const data: LocationItem[] = relatedData.data
+  const data: LocationItem[] = relatedData.data;
 
   useEffect(() => {
     if (relatedCityName?.data) {
       setRelatedData(relatedCityName.data);
     } else {
-      setRelatedData([])
+      setRelatedData([]);
     }
   }, [relatedCityName]);
 
   const handleNavigate = (item: LocationItem) => {
-    // console.log(queryParams)
-    let lon = item.lon
-    let lat = item.lat
-    setTimeout(()=>{
+    let lon = item.lon;
+    let lat = item.lat;
+
+    setTimeout(() => {
       navigate(`/weather?lon=${lon}&lat=${lat}`);
-    },2000)
-  }
+    }, 2000);
+
+  };
 
   const cityName = (item: LocationItem) => {
-
-    setSearch(item.name)
+    setSearch(item.name);
     setIsLoading(true);
-    clearSearch
-    handleNavigate(item)
-
-
-  }
-
-
-
+    handleNavigate(item);
+  };
 
   useEffect(() => {
     setTimeout(() => {
-      dispatch(getOptions(search ? search : ""))
-    }, 1000)
-  }, [search])
+      dispatch(getOptions(search ? search : ""));
+    }, 1000);
+  }, [search]);
 
   return (
     <>
@@ -98,16 +86,13 @@ const Search = () => {
           <ul>
             {data?.map((item, i) => (
               <>
-                <li
+                <button
                   className="cursor-pointer  flex items-center w-[311px] lg:h-[56px] lg:w-[504px] py-[17px]  px-5"
                   key={i}
+                  onClick={() => cityName(item)}
                 >
-                  <button
-                    className="w-[311px] h-full lg:w-[504px] absolute top-0"
-                    onClick={() => cityName(item)}
-                  ></button>
-                  {item.name}
-                </li>
+                  {item.name? item.name :"No City Found"}
+                </button>
                 <hr className="border-black" />
               </>
             ))}

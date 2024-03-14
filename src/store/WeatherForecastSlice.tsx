@@ -131,7 +131,6 @@ export const getWeatherForecast = createAsyncThunk(
     async ({ lat, lon }: { lat: number, lon: number }) => {
         const res =
             await axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APPID}`)
-            // console.log(res.data)
         return res.data
     }
 );

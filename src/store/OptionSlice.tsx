@@ -84,7 +84,6 @@ const initialState: WeatherState = {
 export const getOptions = createAsyncThunk(
   "getOptions",
   async (value:string) => {
-    // console.log(value)
    const res=
       await axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${value}&limit=3&appid=5835ce7cca6e008a5ce418d6f91eaefa`)
     return res

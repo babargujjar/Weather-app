@@ -1,6 +1,4 @@
-import React from "react";
 import cloudy from "./../../assets/icons/cloudyDay.png";
-
 import clearDaySun from "./../../assets/icons/clearDaySun.png";
 import clearNightMoon from "./../../assets/icons/clearNight.png";
 
@@ -21,51 +19,22 @@ import stormNight from "./../../assets/icons/snowNight.png";
 
 import mistDay from "./../../assets/icons/fogSun.png";
 import mistNight from "./../../assets/icons/foggyMoon.png";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { getWeatherForecast } from "../../redux/weatherForecastSlice";
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import { getWeatherForecast } from "../../store/WeatherForecastSlice";
 import { useEffect, useState } from "react";
-import { WeatherResponse } from "../../types/types";
-import { log } from "console";
+import { CurrentWeatherProps, WeatherDatas } from "../../types/types";
 
-const FiveDays = ({ lat, lon }: any) => {
-  const [fiveDaysForecast, setFiveDaysForecast] = useState<
-    WeatherResponse[] | null
-  >(null);
+
+const FiveDays: React.FC<CurrentWeatherProps> = ({ lat, lon }) => {
+
   const dispatch = useAppDispatch();
   const weatherForecast: any = useAppSelector(
-    (state) => state.WeatherForecast.data
-  );
-  // console.log('weatherForecast', weatherForecast)
+    (state) => state.WeatherForecast.data);
 
   useEffect(() => {
     dispatch(getWeatherForecast({ lat, lon }));
   }, [lat, lon, dispatch]);
 
-  interface WeatherData {
-    dt: number; // timestamp
-    main: {
-      temp: number;
-    };
-    weather: {
-      description: string;
-    }[];
-  }
-
-  async function getWeatherForecasts(): Promise<WeatherData[]> {
-    try {
-      const weatherList: WeatherData[] = weatherForecast?.list;
-
-      const transformedData: WeatherData[] = [];
-
-      for (let i = 0; i < weatherList?.length; i += 4) {
-        transformedData.push(weatherList[i]);
-      }
-      return transformedData;
-    } catch (error) {
-      console.error("Error fetching weather data:", error);
-      throw error;
-    }
-  }
 
   const getNextDays = () => {
     const daysOfWeek = [
@@ -78,24 +47,17 @@ const FiveDays = ({ lat, lon }: any) => {
       "Saturday",
     ];
 
-    // Get the current date
     const currentDate = new Date();
-
-    // Create an array to store the names of the next 5 days
     const nextDays = [];
 
     for (let i = 1; i <= 5; i++) {
-      // Calculate the index of the next day
       const nextDayIndex = (currentDate.getDay() + i) % 7;
-
-      // Determine the day name based on the index
       const dayName = i === 1 ? "Tomorrow" : daysOfWeek[nextDayIndex];
-
-      // Push the name of the next day to the array
       nextDays.push(dayName);
     }
     return nextDays;
   };
+
   const nextDays = getNextDays();
   let nextDayOne = nextDays[0];
   let nextDayTwo = nextDays[1];
@@ -149,7 +111,7 @@ const FiveDays = ({ lat, lon }: any) => {
   const uniqueFiveForecastDays: number[] = [];
   let list = weatherForecast?.list;
 
-  const sixDayForecast = (list ?? []).filter((forecast: any) => {
+  const sixDayForecast = (list ?? []).filter((forecast: WeatherDatas) => {
     const forecastDate = new Date(forecast.dt_txt).getDate();
     if (!uniqueFiveForecastDays.includes(forecastDate)) {
       uniqueFiveForecastDays.push(forecastDate);
@@ -165,9 +127,11 @@ const FiveDays = ({ lat, lon }: any) => {
   let thirdDay = fiveDaysForcast[2];
   let forthDay = fiveDaysForcast[3];
   let fifthDay = fiveDaysForcast[4];
-  // first Day start
+
   const kelvinToCelsius = (tempInKelvin: number, decimalPlaces: number = 0) =>
     (tempInKelvin - 273.15).toFixed(decimalPlaces);
+
+  // first Day start
   let firstDayIcon =
     firstDay && firstDay.weather && firstDay.weather[0]
       ? firstDay.weather[0].icon
@@ -242,8 +206,6 @@ const FiveDays = ({ lat, lon }: any) => {
     fifthDay.weather[0] &&
     fifthDay.weather[0].description;
   // fifth Day end
-  //  extracting values in variable end
-  // forecast data end
 
   return (
     <>
@@ -251,8 +213,8 @@ const FiveDays = ({ lat, lon }: any) => {
         <h2 className="text-[#535364] lg:pl-[24px] lg:mt-[28px] text-lg hidden sm:block">
           Previsão para 5 dias
         </h2>
-        <div className="flex text-white lg:m-[24px] items-center">
-          <div className="flex w-full lg:py-[28px] lg:px-[9px] items-center justify-center flex-col">
+        <div className="flex text-white lg:m-[18px] items-center">
+          <div className="flex w-full max-h-[212px] max-w-[116px] lg:py-[28px] lg:px-[9px] md:px-[3px] items-center justify-center flex-col">
             <h6 className="text-[#a1a1b3] text-[13px]">{nextDayOne}</h6>
             <img
               className="lg:w-[67px] lg:h-[67px]"
@@ -269,7 +231,7 @@ const FiveDays = ({ lat, lon }: any) => {
               </span>
             </h3>
           </div>
-          <div className="flex w-full lg:py-[28px] lg:px-[9px] justify-center items-center flex-col">
+          <div className="flex w-full lg:py-[28px] lg:px-[9px] md:px-[3px] justify-center items-center flex-col">
             <h6 className="text-[#a1a1b3] text-[13px]">{nextDayTwo}</h6>
             <img
               className="lg:w-[67px] lg:h-[67px]"
@@ -286,7 +248,7 @@ const FiveDays = ({ lat, lon }: any) => {
               </span>
             </h3>
           </div>
-          <div className="flex lg:py-[28px] w-full lg:px-[9px] justify-center items-center flex-col">
+          <div className="flex lg:py-[28px] w-full lg:px-[9px] md:px-[3px] justify-center items-center flex-col">
             <h6 className="text-[#a1a1b3] text-[13px]">{nextDayThree}</h6>
             <img
               className="lg:w-[67px] lg:h-[67px]"
@@ -303,7 +265,7 @@ const FiveDays = ({ lat, lon }: any) => {
               </span>
             </h3>
           </div>
-          <div className="flex w-full lg:py-[28px] lg:px-[9px] justify-center items-center flex-col">
+          <div className="flex w-full lg:py-[28px] lg:px-[9px] md:px-[3px] justify-center items-center flex-col">
             <h6 className="text-[#a1a1b3] text-[13px]">{nextDayFour}</h6>
             <img
               className="lg:w-[67px] lg:h-[67px]"
@@ -320,7 +282,7 @@ const FiveDays = ({ lat, lon }: any) => {
               </span>
             </h3>
           </div>
-          <div className="flex w-full lg:py-[28px] lg:px-[9px] justify-center items-center flex-col">
+          <div className="flex w-full lg:py-[28px] lg:px-[9px] md:px-[3px] justify-center items-center flex-col">
             <h6 className="text-[#a1a1b3] text-[13px]">{nextDayFifth}</h6>
             <img
               className="lg:w-[67px] lg:h-[67px]"
