@@ -16,33 +16,28 @@ import stormNight from "./../../assets/icons/snowNight.png";
 import mistDay from "./../../assets/icons/fogSun.png";
 import mistNight from "./../../assets/icons/foggyMoon.png";
 
-import bgClearDay from "../../assets/images/bgClearDay.svg"
-import bgClearNight from "../../assets/images/bgClearNight.svg"
-import bgClooudyDay from "../../assets/images/bgCloudyDay.svg"
-import bgCloudyNight from "../../assets/images/bgCloudyNight.svg"
-import bgFewCloudDay from "../../assets/images/bgFewCloudDay.svg"
+import bgClearDay from "../../assets/images/bgClearDay.svg";
+import bgClearNight from "../../assets/images/bgClearNight.svg";
+import bgClooudyDay from "../../assets/images/bgCloudyDay.svg";
+import bgCloudyNight from "../../assets/images/bgCloudyNight.svg";
+import bgFewCloudDay from "../../assets/images/bgFewCloudDay.svg";
 import bgFewCloudNight from "../../assets/images/bgFewCloudNight.svg";
-import bgRainDay from "../../assets/images/bgRainDay.svg"
-import bgRainNight from "../../assets/images/bgRainNight.svg"
-import bgSnowDay from "../../assets/images/bgSnowDay.svg"
-import bgStromDay from "../../assets/images/bgStormDay.svg"
-import bgStromNight from "../../assets/images/bgStormNight.svg"
+import bgRainDay from "../../assets/images/bgRainDay.svg";
+import bgRainNight from "../../assets/images/bgRainNight.svg";
+import bgSnowDay from "../../assets/images/bgSnowDay.svg";
+import bgStromDay from "../../assets/images/bgStormDay.svg";
+import bgStromNight from "../../assets/images/bgStormNight.svg";
 
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { getCurrentWeather } from "../../store/CurrentWeatherSlice";
 import { CustomDateTime, CurrentWeatherProps } from "../../types/types";
-import { url } from "inspector";
 
 const CurrentWeather: React.FC<CurrentWeatherProps> = ({ lat, lon }) => {
-
-
-  const [backgroundImage, setBackgroundImage] = useState<string>("");
   const dispatch = useAppDispatch();
   const currentWeather = useAppSelector((state) => state.CurrentWeather.data);
   const weather = currentWeather;
 
-
-    let currentTempIcon =
+  let currentTempIcon =
     weather && weather.weather && weather.weather[0]
       ? weather.weather[0].icon
       : "01d";
@@ -162,7 +157,6 @@ const CurrentWeather: React.FC<CurrentWeatherProps> = ({ lat, lon }) => {
         return cloudy;
     }
   };
-  // const getBackgroungImg = (dayImg: string) => {
   //   switch (dayImg) {
   //     case "01d":
   //       return bgClearDay;
@@ -205,8 +199,8 @@ const CurrentWeather: React.FC<CurrentWeatherProps> = ({ lat, lon }) => {
   //   }
   // };
 
-  const getIcon = currentTempIcon
-console.log(getIcon)
+  const getIcon = currentTempIcon;
+  console.log(getIcon);
   const styles = {
     backgroundImage:
       getIcon === "01d"
@@ -232,7 +226,7 @@ console.log(getIcon)
         : getIcon === "10d"
         ? `url(${bgRainDay})`
         : getIcon === "10n"
-        ?` url(${bgRainNight})`
+        ? ` url(${bgRainNight})`
         : getIcon === "11d"
         ? `url(${bgStromDay})`
         : getIcon === "11n"
@@ -246,16 +240,9 @@ console.log(getIcon)
         : getIcon === "50n"
         ? `url(${bgStromNight})`
         : "initial",
-    // height: "calc(100% - 50px)",
     height: "calc(100% - 50px)",
     backgroundSize: "cover",
-  }
-  // const styles = {
-  //   backgroundImage: `url(${firstSvg})`,
-  //   backgroundSize: "cover", // Use the imported image
-  //   // other existing styles
-  // };
-
+  };
 
   const tempKtoC = (value: number, decimalPlaces: number = 0) => {
     const newValue = (value - 273).toFixed(decimalPlaces);
@@ -265,12 +252,6 @@ console.log(getIcon)
   useEffect(() => {
     dispatch(getCurrentWeather({ lat, lon }));
   }, [lat, lon, dispatch]);
-
-    // useEffect(() => {
-    //   if (weather && weather.weather[0].icon) {
-    //     setBackgroundImage(getBackgroungImg(currentTempIcon));
-    //   }
-    // }, [weather]);
 
   return (
     <>
@@ -286,7 +267,8 @@ console.log(getIcon)
       </div>
       <div
         style={styles}
-        className="bg-cover flex flex-col justify-between object-cover cardbg overflow-hidden relative px-5 lg:px-7 py-5 lg:py-7  text-white text-xl">
+        className="bg-cover flex flex-col justify-between object-cover cardbg overflow-hidden relative px-5 lg:px-7 py-5 lg:py-7  text-white text-xl"
+      >
         <div className="flex justify-between ">
           <div>
             <h1 className="text-[17px] sm:text-2xl">{weather?.name}</h1>

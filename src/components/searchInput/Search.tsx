@@ -68,6 +68,7 @@ const Search = () => {
             }}
             type="text"
             placeholder="Search Location"
+            autoComplete="off"
           />
           {isLoading && (
             <div className="absolute top-4 right-2 h-[32px] w-[32px]">
@@ -91,7 +92,7 @@ const Search = () => {
                   key={i}
                   onClick={() => cityName(item)}
                 >
-                  {item.name? item.name :"No City Found"}
+                  {item.name ? item.name : "No City Found"}
                 </button>
                 <hr className="border-black" />
               </>
