@@ -26,14 +26,14 @@ const WeatherDetails = () => {
         <div className='w-full h-[812px] lg:h-[768px] bg-[#13131A] '>
             {/* <div className='grid grid-cols-2 h-full w-full gap-5 max-w-[1318px] max-h-[720px] mx-auto py-6  '> */}
             {/* current temperature section */}
-            <div className='flex flex-col lg:flex-row lg:w-[1318px] lg:h-[720px] gap-[8px] lg:gap-[23px] p-[8px] lg:p-[24px]'>
-                <div className='p-[12px] lg:p-5 w-[359px] h-[398px] lg:w-[664px] lg:h-[720px] col-span-2 lg:col-span-1 bg-[#16161F] rounded-lg'>
+            <div className='flex flex-col lg:flex-row lg:max-w-[1318px] lg:max-h-[720px] gap-[8px] lg:gap-[23px] p-[8px] lg:p-[24px]'>
+                <div className='p-[12px] lg:p-5 max-w-[359px] max-h-[398px] lg:w-[664px] lg:max-h-[720px] col-span-2 lg:col-span-1 bg-[#16161F] rounded-lg'>
                     <CurrentWeather lat={lat ?? ""} lon={lon ?? ""} />
                 </div>
 
                 {/* other five days temperature section and other details about weather */}
-                <div className='lg:w-[630px] h-[720px] w-full'>
-                    <div className='  col-span-2 lg:col-span-1 h-full flex flex-col gap-2 md:gap-3 grid-cols-5'>
+                <div className='lg:max-w-[630px] max-h-[720px] max-w-full'>
+                    <div className='  col-span-2 lg:col-span-1 max-h-full flex flex-col gap-2 md:gap-3 grid-cols-5'>
                         {/* other weather details */}
 
                         <OtherDetails lat={lat ?? ""} lon={lon ?? ""} />

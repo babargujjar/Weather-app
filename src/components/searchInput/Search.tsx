@@ -12,31 +12,24 @@ const Search = () => {
   const [search, setSearch] = useState('');
   const [isLoading, setIsLoading] = useState(false)
   const [relatedData, setRelatedData] = useState<any>([]);
-  const location = useLocation
-  // console.log(location)
-  useEffect(() => {
-    dispatch(getOptionsStart)
-  }, [location])
 
-  const handler = (value: any) => {
+
+
+  const handler = (value: string) => {
     setSearch(value)
-    {
-      search ? setIsLoading(true) : setIsLoading(false)
-    }
   }
-  // console.log(search)
+ 
   const navigate = useNavigate()
 
   const dispatch = useAppDispatch()
   const relatedCityName = useAppSelector(state => state.options)
 
   const clearSearch = useAppSelector(state => state.options.data)
+  console.log(clearSearch)
 
-  // console.log(clearSearch)
 
   const data: LocationItem[] = relatedData.data
 
-  // console.log(data)
   useEffect(() => {
     if (relatedCityName?.data) {
       setRelatedData(relatedCityName.data);
@@ -49,13 +42,16 @@ const Search = () => {
     // console.log(queryParams)
     let lon = item.lon
     let lat = item.lat
-    navigate(`/weather?lon=${lon}&lat=${lat}`)
+    setTimeout(()=>{
+      navigate(`/weather?lon=${lon}&lat=${lat}`);
+    },2000)
   }
 
   const cityName = (item: LocationItem) => {
 
-    setIsLoading(true);
     setSearch(item.name)
+    setIsLoading(true);
+    clearSearch
     handleNavigate(item)
 
 
@@ -98,7 +94,7 @@ const Search = () => {
         </div>
       </div>
       {data?.length > 0 && (
-        <div className=" bg-gray-500 lg:w-[504px] rounded-lg mt-2 mx-auto object-cover overflow-hidden">
+        <div className=" bg-gray-500 lg:max-w-[504px] rounded-lg mt-2 mx-auto object-cover overflow-hidden">
           <ul>
             {data?.map((item, i) => (
               <>
@@ -107,7 +103,7 @@ const Search = () => {
                   key={i}
                 >
                   <button
-                    className="w-full h-full absolute top-0"
+                    className="w-[311px] h-full lg:w-[504px] absolute top-0"
                     onClick={() => cityName(item)}
                   ></button>
                   {item.name}

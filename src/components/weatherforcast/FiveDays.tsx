@@ -66,7 +66,6 @@ const FiveDays = ({ lat, lon }: any) => {
       throw error;
     }
   }
-  console.log(getWeatherForecasts());
 
   const getNextDays = () => {
     const daysOfWeek = [
@@ -103,7 +102,6 @@ const FiveDays = ({ lat, lon }: any) => {
   let nextDayThree = nextDays[2];
   let nextDayFour = nextDays[3];
   let nextDayFifth = nextDays[4];
-  //  weather icons condition function start
 
   const weatherIconCondition = (dayIcon: string) => {
     switch (dayIcon) {
@@ -144,15 +142,12 @@ const FiveDays = ({ lat, lon }: any) => {
       case "50n":
         return mistNight;
       default:
-        // Handle unexpected input gracefully
         return cloudy;
     }
   };
 
-  // forecast data start
   const uniqueFiveForecastDays: number[] = [];
   let list = weatherForecast?.list;
-  // console.log(list)
 
   const sixDayForecast = (list ?? []).filter((forecast: any) => {
     const forecastDate = new Date(forecast.dt_txt).getDate();
@@ -162,7 +157,6 @@ const FiveDays = ({ lat, lon }: any) => {
     }
     return false;
   });
-  // console.log(sixDayForecast)
 
   let fiveDaysForcast = sixDayForecast.slice(1);
 
@@ -171,7 +165,6 @@ const FiveDays = ({ lat, lon }: any) => {
   let thirdDay = fiveDaysForcast[2];
   let forthDay = fiveDaysForcast[3];
   let fifthDay = fiveDaysForcast[4];
-  //  extracting values in variable start
   // first Day start
   const kelvinToCelsius = (tempInKelvin: number, decimalPlaces: number = 0) =>
     (tempInKelvin - 273.15).toFixed(decimalPlaces);
