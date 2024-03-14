@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom'
 import CurrentWeather from '../../components/currentWeather/CurrentWeather'
-import OtherDetails from '../../components/otherWaetherDetals/OtherDetails'
+import OtherDetails from '../../components/otherWaetherDetails/OtherDetails'
 import FiveDays from '../../components/weatherForcast/FiveDays'
 
 const WeatherDetails = () => {
