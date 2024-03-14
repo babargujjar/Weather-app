@@ -1,8 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-// import { Citys, WeatherState } from "../../types/types";
 import axios from "axios";
-import { APPID } from "../config/config";
 
 
 

@@ -21,7 +21,7 @@ import mistDay from "./../../assets/icons/fogSun.png";
 import mistNight from "./../../assets/icons/foggyMoon.png";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { getWeatherForecast } from "../../store/WeatherForecastSlice";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { CurrentWeatherProps, WeatherDatas } from "../../types/types";
 
 

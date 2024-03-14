@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Logos from "./../../assets/Logos.svg";
 import cloudy from "./../../assets/icons/cloudyDay.png";
 import clearDaySun from "./../../assets/icons/clearDaySun.png";

@@ -7,7 +7,6 @@ import { useAppDispatch, useAppSelector } from "../../hooks";
 
 const OtherDetails = () => {
 
-  const dispatch = useAppDispatch();
   const weather = useAppSelector((state) => state.CurrentWeather.data);
 
 

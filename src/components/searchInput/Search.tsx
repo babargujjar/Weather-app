@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import { getOptions, getOptionsStart } from "../../store/OptionSlice";
+import { getOptions } from "../../store/OptionSlice";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { LocationItem } from "../../types/types";
